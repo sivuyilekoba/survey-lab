@@ -1,8 +1,50 @@
+<script setup>
+import { LockClosedIcon } from "@heroicons/vue/solid";
+import store from "../store";
+import { useRouter } from "vue-router";
+import { ref } from "vue";
+import Alert from "../components/Alert.vue";
+import TButtonLoading from "../components/core/TButtonLoading.vue";
+import { useDark, useToggle } from '@vueuse/core';
+
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
+
+const router = useRouter();
+
+const user = {
+  email: "",
+  password: "",
+};
+let loading = ref(false);
+let errorMsg = ref("");
+
+function login(ev) {
+  ev.preventDefault();
+
+  loading.value = true;
+  store
+    .dispatch("login", user)
+    .then(() => {
+      loading.value = false;
+      router.push({
+        name: "Dashboard",
+      });
+    })
+    .catch((err) => {
+      loading.value = false;
+      errorMsg.value = err.response.data.error;
+    });
+}
+</script>
+
+
 <template>
+  <button @click="toggleDark()" class="px-4 py2 text-white bg-green-500 rounded" > Toggle Dark Mode</button>
   <div>
     <img
-      class="mx-auto h-12 w-auto"
-      src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+      class="mx-auto h-25 w-auto rounded-full"
+      src="https://form-publisher.com/blog/content/images/2022/08/How-to-Make-a-Survey-in-Google-Forms.png"
       alt="Workflow"
     />
     <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -101,38 +143,3 @@
   </form>
 </template>
 
-<script setup>
-import { LockClosedIcon } from "@heroicons/vue/solid";
-import store from "../store";
-import { useRouter } from "vue-router";
-import { ref } from "vue";
-import Alert from "../components/Alert.vue";
-import TButtonLoading from "../components/core/TButtonLoading.vue";
-
-const router = useRouter();
-
-const user = {
-  email: "",
-  password: "",
-};
-let loading = ref(false);
-let errorMsg = ref("");
-
-function login(ev) {
-  ev.preventDefault();
-
-  loading.value = true;
-  store
-    .dispatch("login", user)
-    .then(() => {
-      loading.value = false;
-      router.push({
-        name: "Dashboard",
-      });
-    })
-    .catch((err) => {
-      loading.value = false;
-      errorMsg.value = err.response.data.error;
-    });
-}
-</script>

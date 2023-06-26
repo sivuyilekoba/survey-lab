@@ -8,4 +8,13 @@
 </template>
 
 <style>
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 dark:bg-slate-800;
+}
+
 </style>

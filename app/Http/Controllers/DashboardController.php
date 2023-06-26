@@ -32,7 +32,7 @@ class DashboardController extends Controller
             ->where('surveys.user_id', $user->id)
             ->orderBy('end_date', 'DESC')
             ->limit(5)
-            ->getModels('survey_answers.*');
+        ->getModels('survey_answers.*');
 
         return [
             'totalSurveys' => $total,

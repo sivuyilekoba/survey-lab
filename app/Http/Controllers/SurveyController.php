@@ -41,7 +41,7 @@ class SurveyController extends Controller
     {
         $data = $request->validated();
 
-        // Check if image was given and save on local file system
+        // Check if image was given and saved on local file system
         if (isset($data['image'])) {
             $relativePath  = $this->saveImage($data['image']);
             $data['image'] = $relativePath;
@@ -212,7 +212,6 @@ class SurveyController extends Controller
      * @param $data
      * @return mixed
      * @throws \Illuminate\Validation\ValidationException
-     * @author Zura Sekhniashvili <zurasekhniashvili@gmail.com>
      */
     private function createQuestion($data)
     {
@@ -243,7 +242,6 @@ class SurveyController extends Controller
      * @param                            $data
      * @return bool
      * @throws \Illuminate\Validation\ValidationException
-     * @author Zura Sekhniashvili <zurasekhniashvili@gmail.com>
      */
     private function updateQuestion(SurveyQuestion $question, $data)
     {
@@ -272,7 +270,6 @@ class SurveyController extends Controller
      *
      * @param $image
      * @throws \Exception
-     * @author Zura Sekhniashvili <zurasekhniashvili@gmail.com>
      */
     private function saveImage($image)
     {

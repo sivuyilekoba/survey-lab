@@ -1,4 +1,5 @@
 <template>
+  <div>
   <!-- Question index -->
   <div class="flex items-center justify-between">
     <h3 class="text-lg font-bold">
@@ -264,6 +265,9 @@
   <!--/ Data -->
 
   <hr class="my-4" />
+
+  
+</div>
 </template>
 
 <script setup>

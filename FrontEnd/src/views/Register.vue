@@ -2,8 +2,8 @@
   <div>
     <div>
       <img
-        class="mx-auto h-12 w-auto"
-        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+        class="mx-auto h-22 w-auto rounded-full"
+        src="https://form-publisher.com/blog/content/images/2022/08/How-to-Make-a-Survey-in-Google-Forms.png"
         alt="Workflow"
       />
       <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
